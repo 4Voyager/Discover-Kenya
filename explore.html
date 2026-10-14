@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#0f1b16">
+  <title>Explore Kenya's Attractions — Discover Kenya</title>
+  <meta name="description" content="Search and filter Kenya's attractions by type, region and popularity. Browse as cards or on an interactive map.">
+  <meta name="theme-color" content="#0f1b16">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/explore.css">
+</head>
+<body data-page="explore">
+
+  <a class="skip-link" href="#results">Skip to results</a>
+  <header data-site-header></header>
+
+  <main>
+    <!-- Page hero -->
+    <section class="xhero" aria-labelledby="xtitle">
+      <img class="xhero__bg" src="images/explore-hero-bg.jpg" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
+      <div class="xhero__inner wrap">
+        <h1 id="xtitle" class="xhero__title">Explore Kenya’s attractions</h1>
+        <form class="search" role="search" data-search-form>
+          <label class="visually-hidden" for="q">Search attractions</label>
+          <span class="search__icon" data-icon="search"></span>
+          <input id="q" class="search__input" type="search" name="q" placeholder="Search by place, animal or activity…" autocomplete="off" spellcheck="false" enterkeyhint="search" data-search>
+          <button class="search__clear" type="button" aria-label="Clear search" data-search-clear hidden></button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="xtools" aria-label="Filters">
+      <div class="xtools__inner wrap">
+        <div class="chips xtools__cats" role="group" aria-label="Category" data-cat-chips></div>
+        <div class="xtools__row">
+          <label class="select"><span class="select__label">Region</span>
+            <select data-region-select></select>
+          </label>
+          <label class="select"><span class="select__label">Sort by</span>
+            <select data-sort-select>
+              <option value="popular">Most popular</option>
+              <option value="region">Region</option>
+              <option value="type">Type</option>
+              <option value="name">Name, A–Z</option>
+            </select>
+          </label>
+          <div class="seg" role="group" aria-label="View">
+            <button type="button" class="seg__btn" data-view-btn="grid" aria-pressed="true"></button>
+            <button type="button" class="seg__btn" data-view-btn="map" aria-pressed="false"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="xresults wrap" id="results" tabindex="-1" aria-label="Results">
+      <div class="xstatus">
+        <p data-status aria-live="polite"></p>
+        <button class="linklike" type="button" data-reset hidden>Clear all filters</button>
+      </div>
+
+      <div class="xlayout" data-layout data-view="grid">
+        <div class="xlist">
+          <div class="xgrid" data-grid></div>
+          <div class="xempty" data-empty hidden>
+            <p class="xempty__title display">Nothing matches that</p>
+            <p>Try a different word, or remove a filter to see more places.</p>
+            <button class="btn btn--dark" type="button" data-reset-empty>Clear all filters</button>
+          </div>
+          <div class="xmore" data-more hidden>
+            <p data-more-status></p>
+            <button class="btn btn--dark" type="button" data-more-btn>Show more places</button>
+          </div>
+        </div>
+        <aside class="xmap" aria-label="Map of results">
+          <div data-map></div>
+          <p class="xmap__hint">Select a pin to jump to that place in the list.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/geo.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/explore.js"></script>
+</body>
+</html>

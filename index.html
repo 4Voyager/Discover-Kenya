@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#0f1b16">
+  <title>Discover Kenya — Safaris, Beaches, Mountains and Culture</title>
+  <meta name="description" content="Explore Kenya's most remarkable places: wildlife reserves, white-sand coast, glacier-topped mountains and living Swahili culture.">
+  <meta name="theme-color" content="#0f1b16">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body data-page="home">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header data-site-header></header>
+
+  <main id="main">
+
+    <!-- 1. HERO: the next card grows to fill the screen while the current image expands out -->
+    <section class="hero" id="hero" aria-roledescription="carousel" aria-label="Featured destinations">
+      <h1 class="visually-hidden">Discover Kenya’s most remarkable places</h1>
+      <div class="hero__stage" data-hero-stage>
+        <div class="hero__layers" data-hero-layers></div>
+        <div class="hero__shade" aria-hidden="true"></div>
+
+        <div class="hero__content" data-hero-content aria-live="polite">
+          <p class="hero__region" data-hero-region></p>
+          <p class="hero__name display" data-hero-name></p>
+          <p class="hero__text" data-hero-text></p>
+          <div class="hero__actions">
+            <a class="btn btn--lg" href="explore.html" data-hero-link>See this place</a>
+            <a class="btn btn--lg btn--glass" href="explore.html">Explore all</a>
+          </div>
+        </div>
+
+        <div class="hero__rail" data-hero-cards aria-label="Choose a destination"></div>
+
+        <div class="hero__controls">
+          <button class="round-btn" type="button" aria-label="Previous destination" data-hero-prev></button>
+          <button class="round-btn" type="button" aria-label="Next destination" data-hero-next></button>
+          <button class="round-btn hero__pause" type="button" aria-label="Pause slideshow" aria-pressed="false" data-hero-pause></button>
+          <div class="hero__progress" aria-hidden="true"><span data-hero-progress></span></div>
+          <p class="hero__counter display" data-hero-counter aria-hidden="true"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. FEATURED ATTRACTIONS -->
+    <section class="section featured" id="featured" aria-labelledby="featured-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="featured-title">Places you can’t miss</h2>
+          <p>Five places that show Kenya’s range, from the Mara’s open plains to a car-free island town.</p>
+        </header>
+        <div class="featured__grid" data-featured-grid></div>
+      </div>
+    </section>
+
+    <!-- 3. EXPLORE BY CATEGORY -->
+    <section class="section section--dark categories" id="categories" aria-labelledby="cat-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="cat-title">What are you in the mood for?</h2>
+          <p>Pick a theme and we’ll show you everywhere in Kenya that fits.</p>
+        </header>
+        <ul class="cat-list" data-category-list></ul>
+      </div>
+    </section>
+
+    <!-- 4. POPULAR DESTINATIONS -->
+    <section class="section destinations" id="destinations" aria-labelledby="dest-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="dest-title">Popular destinations</h2>
+          <p>Flip through the places travellers ask about most. Filter by region to narrow it down.</p>
+        </header>
+        <div class="chips destinations__filters" data-destination-filters role="group" aria-label="Filter destinations by region"></div>
+      </div>
+      <div class="destinations__stage" data-destination-carousel tabindex="0" aria-roledescription="carousel" aria-label="Popular destinations"></div>
+      <div class="destinations__nav">
+        <button class="round-btn" type="button" aria-label="Previous destination" data-destination-prev></button>
+        <button class="round-btn" type="button" aria-label="Next destination" data-destination-next></button>
+      </div>
+    </section>
+
+    <!-- 5. REGIONAL MAP -->
+    <section class="section section--salt regions" id="regions" aria-labelledby="regions-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="regions-title">Find your corner of Kenya</h2>
+          <p>Kenya is bigger than it looks. Choose a region and see what’s there.</p>
+        </header>
+        <div class="regions__layout">
+          <div class="regions__map" data-region-map></div>
+          <div class="regions__panel">
+            <div class="regions__tabs" role="tablist" aria-label="Regions" data-region-tabs></div>
+            <div class="regions__detail" data-region-detail role="tabpanel" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FEATURED EXPERIENCES -->
+    <section class="section experiences" id="experiences" aria-labelledby="exp-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="exp-title">Things to do</h2>
+          <p>Six experiences people travel here for.</p>
+        </header>
+        <ul class="exp-list" data-experience-list></ul>
+      </div>
+    </section>
+
+    <!-- 7. SUGGESTED ITINERARIES -->
+    <section class="section section--dark itineraries" id="itineraries" aria-labelledby="iti-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="iti-title">Ready-made journeys</h2>
+          <p>Three routes that link places sensibly, so you spend more time looking and less time driving.</p>
+        </header>
+        <div class="chips itineraries__tabs" role="tablist" aria-label="Itineraries" data-itinerary-tabs></div>
+        <div class="itineraries__layout">
+          <ol class="itinerary" data-itinerary-days></ol>
+          <div class="itineraries__map" data-itinerary-map></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. TESTIMONIALS -->
+    <section class="section stories" id="stories" aria-labelledby="stories-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="stories-title">Travel notes</h2>
+          <p>Practical advice we give friends before they go.</p>
+        </header>
+        <div class="stories__slider" data-story-slider>
+          <figure class="stories__quote" data-story-quote aria-live="polite"></figure>
+          <div class="stories__controls">
+            <button class="round-btn" type="button" aria-label="Previous story" data-story-prev></button>
+            <div class="stories__dots" data-story-dots></div>
+            <button class="round-btn" type="button" aria-label="Next story" data-story-next></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FINAL CTA -->
+    <section class="cta" id="cta" aria-labelledby="cta-title">
+      <img class="cta__bg" src="images/home-cta.jpg" alt="" width="1600" height="900">
+      <div class="cta__inner wrap">
+        <h2 id="cta-title">Your Kenya starts here</h2>
+        <p>Fourteen places, five regions and as many ways to see them. Start with the one that caught your eye.</p>
+        <a class="btn btn--lg" href="explore.html">Explore all attractions</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer data-site-footer></footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/geo.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

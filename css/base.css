@@ -1,0 +1,107 @@
+/* ==========================================================================
+   base.css — design tokens, reset, typography, layout primitives
+   Palette is drawn from the Kenyan flag and the landscape: forest green,
+   flag red, sunset amber, with cool salt-grey for reading surfaces.
+   ========================================================================== */
+
+:root {
+  /* colour */
+  --ink: #0f1b16;
+  --ink-2: #172a22;
+  --forest: #0e4d3a;
+  --leaf: #1f7a5a;
+  --amber: #f2a33a;
+  --amber-2: #ffc46b;
+  --flag: #c1272d;
+  --salt: #eceee7;
+  --paper: #f6f7f2;
+  --dust: #d9c7a3;
+  --text: #17231d;
+  --muted: #55665e;
+  --line: rgba(15, 27, 22, .14);
+  --on-dark: #f4f1e8;
+  --on-dark-muted: rgba(244, 241, 232, .72);
+
+  /* type */
+  --font-display: 'Big Shoulders Display', 'Oswald', 'Bebas Neue', 'Arial Narrow', Impact, sans-serif;
+  --font-body: 'Hanken Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* shape + space */
+  --radius: 20px;
+  --radius-sm: 12px;
+  --gutter: clamp(1.1rem, 4vw, 3rem);
+  --maxw: 1320px;
+  --header-h: 72px;
+
+  /* motion */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --ease-out: cubic-bezier(.23, 1, .32, 1);      /* strong ease-out: entrances, reveals */
+  --ease-io: cubic-bezier(.77, 0, .175, 1);      /* strong ease-in-out: things moving on screen */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; overscroll-behavior-x: none; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+body {
+  margin: 0; background: var(--paper); color: var(--text);
+  font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip;
+}
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+button { font: inherit; color: inherit; cursor: pointer; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4, p, figure, dl, dd { margin: 0; }
+[hidden] { display: none !important; }
+
+/* display type: tall, condensed, set tight */
+h1, h2, h3, .display {
+  font-family: var(--font-display); font-weight: 800; line-height: .92;
+  text-transform: uppercase; letter-spacing: .005em;
+}
+h2 { font-size: clamp(2.6rem, 6.2vw, 5.2rem); text-wrap: balance; }
+h1, h3 { text-wrap: balance; }
+.hero__counter, .gal__count, .dial__center b, .when__row dd { font-variant-numeric: tabular-nums; }
+select { background-color: #fff; color: var(--ink); }
+h3 { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1; }
+
+p { max-width: 62ch; }
+.lead { font-size: clamp(1.15rem, 1.6vw, 1.4rem); line-height: 1.55; color: var(--text); }
+
+/* touch: no 300ms delay, no long-press selection on controls, 16px inputs so iOS never zooms */
+button, a, [role="button"], summary, select, input { touch-action: manipulation; }
+button, [role="button"], .chip, .rtab, .round-btn, .btn { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+input, textarea, select { font-size: max(16px, 1rem); }
+
+/* scroll reveal (js/motion.js tags elements with data-reveal) */
+.reveal-ready [data-reveal] { opacity: 0; transform: translate3d(0, 28px, 0); transition: opacity .8s var(--ease-out), transform .9s var(--ease-out); transition-delay: var(--d, 0ms); }
+.reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
+.reveal-ready [data-reveal="fade"] { transform: none; }
+.reveal-ready [data-reveal="scale"] { transform: scale(.96); }
+.reveal-ready [data-reveal="scale"].is-in { transform: none; }
+
+/* accessibility */
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+.skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 200; background: var(--amber); color: var(--ink); padding: .7rem 1rem; border-radius: 999px; font-weight: 700; transition: top .2s; }
+.skip-link:focus { top: 1rem; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* layout */
+.wrap { width: min(100% - 2 * var(--gutter), var(--maxw)); margin-inline: auto; }
+.section { padding-block: clamp(4.5rem, 9vw, 8.5rem); }
+.section--dark { background: var(--ink); color: var(--on-dark); }
+.section--salt { background: var(--salt); }
+
+/* section heading: big display title on the left, a short line on the right */
+.section-head { display: grid; gap: 1rem 3rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); align-items: end; }
+@media (min-width: 860px) { .section-head { grid-template-columns: 1.2fr 1fr; } .section-head p { justify-self: end; } }
+.section-head p { color: var(--muted); font-size: 1.1rem; }
+.section--dark .section-head p { color: var(--on-dark-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal-ready [data-reveal] { opacity: 1; transform: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
